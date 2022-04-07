@@ -246,7 +246,7 @@ class SwipeablePanel extends Component<SwipeablePanelProps, SwipeablePanelState>
             width: deviceWidth,
             height: allowTouchOutside ? 
               this.state.status === STATUS.SMALL
-                ?  smallPanelHeight - 100
+                ?  (smallPanelHeight ?? 400) - 100
                 : this.state.status === STATUS.LARGE
                   ? largePanelHeight ?? deviceHeight - 100
                   : buttomCloseMargin
@@ -265,7 +265,7 @@ class SwipeablePanel extends Component<SwipeablePanelProps, SwipeablePanelState>
                   //height: allowTouchOutside ? 'auto' : deviceHeight,
                   height: allowTouchOutside ? 
                   this.state.status === STATUS.SMALL
-                    ?  smallPanelHeight - 100
+                    ?  (smallPanelHeight ?? 400) - 100
                     : this.state.status === STATUS.LARGE
                       ? largePanelHeight ?? deviceHeight - 100
                       : buttomCloseMargin
