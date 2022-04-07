@@ -230,6 +230,10 @@ class SwipeablePanel extends Component<SwipeablePanelProps, SwipeablePanelState>
       onClose,
       allowTouchOutside,
       closeOnTouchOutside,
+
+      smallPanelHeight,
+      largePanelHeight,
+      buttomCloseMargin,
     } = this.props;
 
     return showComponent ? (
@@ -238,8 +242,15 @@ class SwipeablePanel extends Component<SwipeablePanelProps, SwipeablePanelState>
           SwipeablePanelStyles.background,
           {
             backgroundColor: noBackgroundOpacity ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0.5)',
-            height: allowTouchOutside ? 'auto' : deviceHeight,
+            //height: allowTouchOutside ? 'auto' : deviceHeight,
             width: deviceWidth,
+            height: allowTouchOutside ? 
+              this.state.status === STATUS.SMALL
+                ?  smallPanelHeight - 100
+                : this.state.status === STATUS.LARGE
+                  ? largePanelHeight ?? deviceHeight - 100
+                  : buttomCloseMargin
+              : deviceHeight,
           },
         ]}
       >
@@ -251,7 +262,14 @@ class SwipeablePanel extends Component<SwipeablePanelProps, SwipeablePanelState>
                 {
                   width: deviceWidth,
                   backgroundColor: 'rgba(0,0,0,0)',
-                  height: allowTouchOutside ? 'auto' : deviceHeight,
+                  //height: allowTouchOutside ? 'auto' : deviceHeight,
+                  height: allowTouchOutside ? 
+                  this.state.status === STATUS.SMALL
+                    ?  smallPanelHeight - 100
+                    : this.state.status === STATUS.LARGE
+                      ? largePanelHeight ?? deviceHeight - 100
+                      : buttomCloseMargin
+                  : deviceHeight,
                 },
               ]}
             />
